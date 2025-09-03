@@ -1,0 +1,58 @@
+     
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>SweetAlert2 Custom Icon + ProgressBar Color</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    /* สี progress bar ตาม type */
+    .alert-success .swal2-timer-progress-bar { background-color: #28a745 !important; } /* เขียว */
+    .alert-error   .swal2-timer-progress-bar { background-color: #dc3545 !important; } /* แดง */
+    .alert-warning .swal2-timer-progress-bar { background-color: #ffc107 !important; } /* เหลือง */
+    .alert-info    .swal2-timer-progress-bar { background-color: #0dcaf0 !important; } /* ฟ้า */
+    .alert-question.swal2-popup .swal2-timer-progress-bar { background-color: #6c757d !important; } /* เทา */
+
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+    button { margin: 6px; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>SweetAlert2: Custom Icon + ProgressBar</h2>
+
+  <button onclick="showAlert('success')">Success</button>
+  <button onclick="showAlert('error')">Error</button>
+  <button onclick="showAlert('warning')">Warning</button>
+  <button onclick="showAlert('info')">Info</button>
+  <button onclick="showAlert('question')">Question</button>
+
+  <script>
+    // ไอคอนจากภายนอก (เปลี่ยนเป็น local path ได้)
+    const customIcons = {
+      success: 'https://cdn-icons-png.flaticon.com/128/14090/14090371.png',
+      error:   'https://cdn-icons-png.flaticon.com/128/6467/6467134.png',
+      warning: 'https://cdn-icons-png.flaticon.com/128/6897/6897039.png',
+      info:    'https://cdn-icons-png.flaticon.com/128/14090/14090267.png',
+      question:'https://cdn-icons-png.flaticon.com/128/16566/16566692.png'
+    };
+
+    function showAlert(type) {
+      Swal.fire({
+        title: 'ทดสอบ Alert',
+        text: 'นี่คือการแจ้งเตือนแบบ ' + type,
+        imageUrl: customIcons[type],
+        imageWidth: 80,
+        timer: 4000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        customClass: {
+          popup: 'alert-' + type // ใส่ class เพื่อเปลี่ยนสี progress bar
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+
+    
